@@ -28,7 +28,7 @@ export interface Comment extends CommentBody {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  _type: "tweet";
+  _type: "comment";
   tweet: {
     _ref: string;
     _type: "reference";

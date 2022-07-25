@@ -28,7 +28,7 @@ function Tweet({ tweet }: Props) {
   console.log(comments);
 
   return (
-    <div className="flex flex-col p-5 space-x-3 border-gray-100 border-y">
+    <div className="flex flex-col p-5 space-x-3 overflow-auto border-gray-100 border-y">
       <div className="flex space-x-3">
         <img
           className="object-cover w-10 h-10 rounded-full"
@@ -59,7 +59,7 @@ function Tweet({ tweet }: Props) {
       <div className="flex justify-between mt-5">
         <div className="flex items-center space-x-3 text-gray-400 cursor-pointer">
           <ChatAlt2Icon className="w-5 h-5" />
-          <p>5</p>
+          <p>{comments.length}</p>
         </div>
 
         <div className="flex items-center space-x-3 text-gray-400 cursor-pointer">
@@ -74,14 +74,14 @@ function Tweet({ tweet }: Props) {
       </div>
 
       {comments?.length > 0 && (
-        <div>
+        <div className="p-5 my-2 mt-5 space-y-5 overflow-y-scroll border-t border-gray-100 max-h-44">
           {comments.map((comment) => (
-            <div key={comment._id}>
+            <div key={comment._id} className="relative flex space-x-2">
+              <hr className="absolute h-8 left-5 top-10 border-x border-twitter/30" />
               <img
                 src={comment.profileImg}
-                className="object-cover rounded-full h-7 w-7"
+                className="object-cover mt-2 rounded-full h-7 w-7"
               />
-
               <div>
                 <div className="flex items-center space-x-1">
                   <p className="font-bold ar-1">{comment.username}</p>
@@ -93,8 +93,8 @@ function Tweet({ tweet }: Props) {
                     date={comment._createdAt}
                   />
                 </div>
+                <p>{comment.comment}</p>
               </div>
-              <p>{comment.comment}</p>
             </div>
           ))}
         </div>
