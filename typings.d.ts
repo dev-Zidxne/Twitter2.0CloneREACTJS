@@ -1,7 +1,7 @@
 import { profile } from "console";
 
 export interface Tweet extends TweetBody {
-  __id: string;
+  _id: string;
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -24,7 +24,7 @@ export type CommentBody = {
 };
 
 export interface Comment extends CommentBody {
-  __id: string;
+  _id: string;
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
