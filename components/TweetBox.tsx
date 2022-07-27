@@ -31,10 +31,7 @@ function TweetBox({ setTweets }: Props) {
   const [imageUrlBoxIsOpen, setImageUrlBoxIsOpen] = useState<boolean>(false);
 
   const addImageToTweet = (
-    e: React.MouseEvent<
-      HTMLButtonElement,
-      React.MouseEvent<Element, globalThis.MouseEvent>
-    >
+    e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault();
     if (!imageInputRef.current?.value) return;
@@ -48,7 +45,9 @@ function TweetBox({ setTweets }: Props) {
     const tweetInfo: TweetBody = {
       text: input,
       username: session?.user?.name || "Unknown User",
-      profileImg: session?.user?.image || "https://links.papareact.com/gll",
+      profileImg:
+        session?.user?.image ||
+        "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
       image: image,
     };
     const result = await fetch(`/api/addTweet`, {
@@ -92,7 +91,7 @@ function TweetBox({ setTweets }: Props) {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="w-4 w-full h-24 text-xl outline-none placeholder:text-xl"
+            className="w-full h-24 text-xl outline-none placeholder:text-xl"
             type="text"
             placeholder="What's Happening?"
           />
@@ -117,7 +116,7 @@ function TweetBox({ setTweets }: Props) {
             </button>
           </div>
           {imageUrlBoxIsOpen && (
-            <form className="flex px-4 py-2 mt-5 rounded-lg bg-twitter/80">
+            <div className="flex px-4 py-2 mt-5 rounded-lg bg-twitter/80">
               <input
                 ref={imageInputRef}
                 className="flex-1 p-2 text-white bg-transparent outline-none placeholder:text-white"
@@ -131,7 +130,7 @@ function TweetBox({ setTweets }: Props) {
               >
                 Add Image
               </button>
-            </form>
+            </div>
           )}
           {image && (
             <img

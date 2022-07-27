@@ -33,7 +33,7 @@ function Feed({ tweets: tweetsProp }: Props) {
           className="h-8 mt-5 mr-5 duration-500 ease-out cursor-pointer v-8 text-twitter tansition-all hover:rotate-180 active:scale-125"
         />
       </div>
-      {/*Tweetbox*/}
+
       <div>
         <TweetBox setTweets={setTweets} />
       </div>
