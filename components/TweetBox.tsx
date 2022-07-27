@@ -61,7 +61,7 @@ function TweetBox({ setTweets }: Props) {
     setTweets(newTweets);
 
     toast("Tweet Posted", {
-      icon: "",
+      icon: ">>",
     });
     return json;
   };
